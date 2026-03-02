@@ -30,7 +30,7 @@ const Navbar = () => {
           RESOURCES
         </a>
 
-        <button className="bg-[#22C55E] px-5 py-2 rounded-lg text-sm font-semibold text-black hover:bg-green-400 transition">
+        <button className="bg-[#22C55E] px-5 py-2 rounded-lg text-sm font-semibold text-black hover:bg-green-400 transition cursor-pointer">
           CONTACT US
         </button>
       </div>
