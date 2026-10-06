@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Linkedin, Twitter, Github } from "lucide-react";
 import { Link } from "react-router-dom";
+import { services } from "../../data/siteContent";
 
 const Footer = () => {
   return (
@@ -43,11 +44,11 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-3 text-sm">
-              <li>Custom Software Development</li>
-              <li>AI & Machine Learning Solutions</li>
-              <li>Cloud Architecture</li>
-              <li>Full Stack Web Development</li>
-              <li>Mobile Application Development</li>
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link to={`/services#${s.slug}`} className="hover:text-brand transition-colors">{s.title}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -55,10 +56,18 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/projects">Projects</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              {[
+                ["/about", "About Us"],
+                ["/projects", "Projects"],
+                ["/technologies", "Technology Demos"],
+                ["/industries", "Industries"],
+                ["/careers", "Careers"],
+                ["/contact", "Contact"],
+              ].map(([to, label]) => (
+                <li key={to}>
+                  <Link to={to} className="hover:text-brand transition-colors">{label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 

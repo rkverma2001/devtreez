@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Reveal from "../ui/Reveal";
 
 export default function CtaSection() {
+  const navigate = useNavigate();
+
   return (
-    <section id="contact" className="relative py-28 lg:py-36 px-6 lg:px-8 scroll-mt-20">
+    <section id="get-started" className="relative py-28 lg:py-36 px-6 lg:px-8 scroll-mt-20">
       <Reveal className="max-w-6xl mx-auto">
         <div className="relative rounded-[2.5rem] p-[1px] bg-gradient-to-r from-brand via-volt to-aqua bg-[length:300%_100%] animate-gradient">
           <div className="relative rounded-[2.5rem] bg-ink overflow-hidden px-6 py-16 sm:px-16 sm:py-24 text-center">
@@ -20,11 +23,16 @@ export default function CtaSection() {
               </p>
 
               <form
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  navigate("/contact", { state: { email: new FormData(e.currentTarget).get("email") } });
+                }}
                 className="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto"
               >
                 <input
                   type="email"
+                  name="email"
+                  aria-label="Your email"
                   placeholder="What's Your Email?"
                   className="flex-1 px-5 py-4 rounded-full bg-white/5 border border-white/15 text-white placeholder:text-gray-500 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition"
                 />

@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, ChevronDown, Cpu, Cloud, Smartphone } from "lucide-react";
 
 const headline = [["Growing", "Ideas"], ["Into", "Global"], ["Innovations"]];
@@ -13,6 +14,7 @@ const floatingChips = [
 
 const HeroSection = () => {
   const [wordIndex, setWordIndex] = useState(0);
+  const navigate = useNavigate();
   const { scrollY } = useScroll();
   const visualY = useTransform(scrollY, [0, 700], [0, 140]);
   const contentY = useTransform(scrollY, [0, 700], [0, -80]);
@@ -110,11 +112,16 @@ const HeroSection = () => {
             </p>
 
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigate("/contact", { state: { email: new FormData(e.currentTarget).get("email") } });
+              }}
               className="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl"
             >
               <input
                 type="email"
+                name="email"
+                aria-label="Your email"
                 placeholder="What's Your Email?"
                 className="flex-1 px-5 py-4 rounded-full bg-white/5 border border-white/15 text-white placeholder:text-gray-500 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition"
               />
@@ -127,12 +134,12 @@ const HeroSection = () => {
               </button>
             </form>
 
-            <a
-              href="#projects"
+            <Link
+              to="/projects"
               className="mt-6 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
             >
               Explore our work <ArrowRight size={14} />
-            </a>
+            </Link>
           </motion.div>
         </div>
 

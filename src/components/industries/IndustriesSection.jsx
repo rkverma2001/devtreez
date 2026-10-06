@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { industries } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
@@ -26,6 +28,12 @@ export default function IndustriesSection() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-14 text-center">
+          <Link to="/industries" className="inline-flex items-center gap-2 text-brand font-semibold hover:text-volt transition-colors">
+            Explore industry solutions <ArrowRight size={18} />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

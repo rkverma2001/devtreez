@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { services } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
@@ -47,8 +48,8 @@ function ServiceCard({ service, index }) {
             ))}
           </ul>
 
-          <a
-            href="#contact"
+          <Link
+            to={`/services#${service.slug}`}
             className="mt-8 inline-flex items-center gap-1.5 text-brand font-semibold"
           >
             Explore More
@@ -56,7 +57,7 @@ function ServiceCard({ service, index }) {
               size={18}
               className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </Reveal>
@@ -81,6 +82,15 @@ export default function ServicesSection() {
             <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
+
+        <Reveal className="mt-14 text-center">
+          <Link
+            to="/technologies"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/15 hover:border-brand/50 hover:text-brand transition-colors font-semibold"
+          >
+            Try our live technology demos <ArrowUpRight size={18} />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

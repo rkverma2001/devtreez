@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { navItems } from "../../data/siteContent";
 
@@ -30,7 +31,7 @@ const Navbar = () => {
           }`}
         >
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img
               src="/devtreez_tree.svg"
               alt=""
@@ -40,39 +41,50 @@ const Navbar = () => {
               <span className="text-white">dev</span>
               <span className="text-brand">treez</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden lg:flex items-center gap-9">
+          <ul className="hidden xl:flex items-center gap-8">
             {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="relative text-gray-300 hover:text-white transition-colors duration-300 text-sm font-medium group"
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  end={item.to === "/"}
+                  className={({ isActive }) =>
+                    `relative text-sm font-medium group transition-colors duration-300 ${isActive ? "text-white" : "text-gray-300 hover:text-white"}`
+                  }
                 >
-                  {item.label}
-                  <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-brand to-aqua transition-all duration-300 group-hover:w-full" />
-                </a>
+                  {({ isActive }) => (
+                    <>
+                      {item.label}
+                      <span
+                        className={`absolute -bottom-2 left-0 h-[2px] bg-gradient-to-r from-brand to-aqua transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
               </li>
             ))}
           </ul>
 
           {/* CTA */}
-          <a
-            href="#contact"
-            className="hidden lg:flex group items-center gap-2 bg-brand hover:bg-volt text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(34,197,94,0.45)]"
+          <Link
+            to="/contact"
+            className="hidden xl:flex group items-center gap-2 bg-brand hover:bg-volt text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(34,197,94,0.45)]"
           >
             Let's Talk
             <ArrowRight
               size={18}
               className="group-hover:translate-x-1 transition-transform"
             />
-          </a>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenu(!mobileMenu)}
-            className="lg:hidden text-white"
+            className="xl:hidden text-white"
             aria-label={mobileMenu ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenu}
           >
@@ -88,34 +100,37 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.97 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden mt-3 backdrop-blur-xl bg-ink/95 border border-white/10 rounded-3xl p-6"
+              className="xl:hidden mt-3 backdrop-blur-xl bg-ink/95 border border-white/10 rounded-3xl p-6 max-h-[calc(100vh-7rem)] overflow-y-auto"
             >
               <ul className="flex flex-col gap-5">
                 {navItems.map((item, index) => (
                   <motion.li
-                    key={item.href}
+                    key={item.to}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                   >
-                    <a
-                      href={item.href}
+                    <NavLink
+                      to={item.to}
+                      end={item.to === "/"}
                       onClick={() => setMobileMenu(false)}
-                      className="text-lg text-gray-300 hover:text-brand transition-colors"
+                      className={({ isActive }) =>
+                        `text-lg transition-colors ${isActive ? "text-brand font-semibold" : "text-gray-300 hover:text-brand"}`
+                      }
                     >
                       {item.label}
-                    </a>
+                    </NavLink>
                   </motion.li>
                 ))}
               </ul>
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={() => setMobileMenu(false)}
                 className="mt-8 block text-center w-full bg-brand text-black font-semibold py-3 rounded-full"
               >
                 Let's Talk
-              </a>
+              </Link>
             </motion.div>
           )}
         </AnimatePresence>
