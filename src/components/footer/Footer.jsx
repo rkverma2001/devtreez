@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0F172A] text-slate-300 rounded-t-4xl  pt-16">
+    <footer className="relative bg-surface text-slate-300 border-t border-white/10 rounded-t-[2.5rem] pt-20 overflow-hidden">
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-brand/10 blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Top Section */}
         <div className="grid md:grid-cols-4 gap-12">
 
           {/* Brand Section */}
           <div>
-            <h2 className="text-2xl font-bold text-white">
-              dev<span className="text-emerald-500">treez</span>
+            <h2 className="font-display text-2xl font-bold text-white">
+              dev<span className="text-brand">treez</span>
             </h2>
 
             <p className="mt-4 text-sm text-slate-400 leading-relaxed">
@@ -28,8 +29,8 @@ const Footer = () => {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-lg bg-slate-800 flex items-center 
-                             justify-center hover:bg-emerald-500/20 
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center 
+                             justify-center hover:bg-brand hover:text-black hover:border-brand 
                              transition duration-300"
                 >
                   <Icon className="w-4 h-4" />
@@ -78,17 +79,17 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-slate-800 border border-slate-700 
+                className="flex-1 min-w-0 bg-white/5 border border-white/10 
                            rounded-lg px-4 py-2 text-sm 
                            placeholder:text-slate-500
                            focus:outline-none focus:ring-1 
-                           focus:ring-emerald-500"
+                           focus:ring-brand"
               />
               <button
                 type="submit"
-                className="bg-gradient-to-r from-green-500 to-green-600
+                className="bg-gradient-to-r from-brand to-volt
                            px-4 py-2 rounded-lg text-sm font-semibold 
-                           text-white hover:opacity-90 transition cursor-pointer"
+                           text-black hover:opacity-90 transition cursor-pointer"
               >
                 Subscribe
               </button>
@@ -98,7 +99,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-slate-800 mt-12" />
+        <div className="border-t border-white/10 mt-12" />
 
         {/* Bottom Bar */}
         <div className="py-6 flex flex-col md:flex-row 
@@ -117,6 +118,14 @@ const Footer = () => {
         </div>
 
       </div>
+
+      {/* Oversized wordmark */}
+      <p
+        aria-hidden="true"
+        className="relative font-display font-bold text-outline text-center leading-none select-none text-[22vw] -mb-[4vw]"
+      >
+        devtreez
+      </p>
     </footer>
   );
 };
