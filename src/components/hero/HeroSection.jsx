@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="py-16 flex flex-col lg:flex-row items-center justify-between text-white">
+    <section className="pt-36 pb-16 flex flex-col lg:flex-row items-center justify-between text-white">
       
       {/* Left Side - AI Tree SVG */}
       <div className="w-full lg:w-1/2 flex justify-center mb-12 lg:mb-0">
