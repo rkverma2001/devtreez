@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { motion, useScroll } from "motion/react";
 import { processSteps } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
-import FloatingShapes from "../ui/FloatingShapes";
 import SectionHeading from "../ui/SectionHeading";
 
 export default function ProcessSection() {
@@ -14,7 +13,6 @@ export default function ProcessSection() {
 
   return (
     <section id="process" className="relative py-28 lg:py-36">
-      <FloatingShapes preset="both" />
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <SectionHeading
           eyebrow="How We Work"

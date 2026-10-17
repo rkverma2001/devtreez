@@ -4,7 +4,6 @@ import { MotionConfig, motion, useScroll } from "motion/react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Seo from "../../seo/Seo";
-import PageDecor from "../ui/PageDecor";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -31,7 +30,6 @@ function ScrollManager() {
 
 export default function Layout() {
   const { scrollYProgress } = useScroll();
-  const { pathname } = useLocation();
 
   return (
     <MotionConfig reducedMotion="user">
@@ -47,8 +45,7 @@ export default function Layout() {
       <Navbar />
 
       {/* overflow-x-clip (not hidden) keeps sticky sections working */}
-      <main className="relative isolate overflow-x-clip">
-        {pathname !== "/" && <PageDecor key={pathname} />}
+      <main className="overflow-x-clip">
         <Suspense fallback={<div className="min-h-screen" />}>
           <Outlet />
         </Suspense>

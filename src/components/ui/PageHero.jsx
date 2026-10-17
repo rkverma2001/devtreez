@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import Photo from "./Photo";
 import AnimatedUnderline from "./AnimatedUnderline";
-import FloatingShapes from "./FloatingShapes";
 import BackgroundVideo from "./BackgroundVideo";
 
 export default function PageHero({ eyebrow, title, highlight, description, image, imageAlt = "", video, children }) {
@@ -37,7 +36,6 @@ export default function PageHero({ eyebrow, title, highlight, description, image
       <div className="absolute -top-40 left-1/4 w-[500px] h-[500px] rounded-full bg-brand/20 blur-[140px] animate-blob" />
       <div className="absolute -top-20 right-0 w-[420px] h-[420px] rounded-full bg-aqua/15 blur-[140px] animate-blob [animation-delay:-6s]" />
 
-      <FloatingShapes preset="both" />
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
         <motion.span

@@ -3,7 +3,6 @@ import { animate, motion, useInView, useMotionValue, useTransform } from "motion
 import { ShieldCheck, Zap, Users } from "lucide-react";
 import { stats } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
-import FloatingShapes from "../ui/FloatingShapes";
 import SectionHeading from "../ui/SectionHeading";
 
 const pillars = [
@@ -35,7 +34,6 @@ function Counter({ value, suffix }) {
 export default function AboutSection() {
   return (
     <section id="about" className="relative py-28 lg:py-36 scroll-mt-20">
-      <FloatingShapes preset="right" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <SectionHeading
