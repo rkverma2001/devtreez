@@ -419,3 +419,12 @@ export const faqs = [
   { q: "Will I own the code?", a: "Yes. All code and IP we build for you belongs to you." },
   { q: "Can you work with our existing team?", a: "Absolutely. We can lead the build or embed alongside your engineers." },
 ];
+
+export const contactInfo = {
+  phone: "+91 87078 78731",
+  phoneHref: "tel:+918707878731",
+  email: "hello@devtreez.com",
+  emailHref: "mailto:hello@devtreez.com",
+  address: "New Delhi, India",
+  mapHref: "https://www.google.com/maps/search/?api=1&query=New+Delhi%2C+India",
+};

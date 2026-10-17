@@ -1,4 +1,4 @@
-import { faqs, projects, services } from "../data/siteContent";
+import { contactInfo, faqs, projects, services } from "../data/siteContent";
 
 export const SITE_URL = "https://www.devtreez.com";
 export const SITE_NAME = "devtreez";
@@ -11,6 +11,12 @@ const organization = {
   url: SITE_URL,
   logo: `${SITE_URL}/images/icon-512.png`,
   description: "AI-first technology company building AI solutions, websites, mobile apps and cloud platforms.",
+  email: contactInfo.email,
+  telephone: "+91-8707878731",
+  address: { "@type": "PostalAddress", addressLocality: "New Delhi", addressRegion: "Delhi", addressCountry: "IN" },
+  contactPoint: [
+    { "@type": "ContactPoint", contactType: "sales", telephone: "+91-8707878731", email: contactInfo.email, areaServed: "Worldwide" },
+  ],
 };
 
 const website = {

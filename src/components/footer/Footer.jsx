@@ -1,6 +1,6 @@
-import { Facebook, Instagram, Linkedin, Twitter, Github } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, Github, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import { services } from "../../data/siteContent";
+import { contactInfo, services } from "../../data/siteContent";
 import NewsletterForm from "./NewsletterForm";
 
 const Footer = () => {
@@ -24,6 +24,19 @@ const Footer = () => {
               and cutting-edge engineering. We transform ideas into 
               high-performance systems.
             </p>
+
+            {/* Contact details */}
+            <address className="not-italic mt-5 space-y-2 text-sm">
+              <a href={contactInfo.phoneHref} className="flex items-center gap-2.5 hover:text-brand transition-colors">
+                <Phone size={15} className="text-brand" /> {contactInfo.phone}
+              </a>
+              <a href={contactInfo.emailHref} className="flex items-center gap-2.5 hover:text-brand transition-colors">
+                <Mail size={15} className="text-brand" /> {contactInfo.email}
+              </a>
+              <p className="flex items-center gap-2.5">
+                <MapPin size={15} className="text-brand" /> {contactInfo.address}
+              </p>
+            </address>
 
             {/* Social Icons */}
             <div className="flex gap-3 mt-6">

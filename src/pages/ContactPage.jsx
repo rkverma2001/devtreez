@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, CalendarDays, CheckCircle2, Clock, Loader2, MessageSquare, Sparkles } from "lucide-react";
-import { faqs, services } from "../data/siteContent";
+import { ArrowRight, CalendarDays, CheckCircle2, Clock, Loader2, Mail, MapPin, MessageSquare, Phone, Sparkles } from "lucide-react";
+import { contactInfo, faqs, services } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import HeadingBar from "../components/ui/HeadingBar";
@@ -167,6 +167,36 @@ export default function ContactPage() {
         </Reveal>
 
         <div className="space-y-5">
+          <Reveal delay={0.05}>
+            <address className="not-italic rounded-[2rem] border border-brand/30 bg-gradient-to-br from-brand/10 to-aqua/5 p-7">
+              <h3 className="font-display text-xl font-semibold">Reach us directly</h3>
+              <HeadingBar className="mt-3 w-10" />
+              <ul className="mt-5 space-y-4">
+                {[
+                  { icon: Phone, label: "Call us", value: contactInfo.phone, href: contactInfo.phoneHref },
+                  { icon: Mail, label: "Email", value: contactInfo.email, href: contactInfo.emailHref },
+                  { icon: MapPin, label: "Office", value: contactInfo.address, href: contactInfo.mapHref, external: true },
+                ].map(({ icon: Icon, label, value, href, external }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+                      className="group flex items-center gap-4"
+                    >
+                      <span className="shrink-0 w-11 h-11 rounded-xl bg-brand/15 border border-brand/30 flex items-center justify-center group-hover:bg-brand group-hover:text-black transition-colors">
+                        <Icon size={20} className="text-brand group-hover:text-black transition-colors" />
+                      </span>
+                      <span>
+                        <span className="block text-xs uppercase tracking-wider text-gray-500">{label}</span>
+                        <span className="block font-semibold text-white group-hover:text-brand transition-colors">{value}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </address>
+          </Reveal>
+
           <Reveal delay={0.1}>
             <div className="rounded-[2rem] border border-white/10 bg-surface p-7 space-y-5">
               {[
