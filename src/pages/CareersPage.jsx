@@ -1,13 +1,19 @@
+import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence } from "motion/react";
 import { ArrowUpRight, Briefcase, MapPin } from "lucide-react";
 import { openRoles, perks } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
+import ApplyModal from "../components/careers/ApplyModal";
 import HeadingBar from "../components/ui/HeadingBar";
 import SectionHeading from "../components/ui/SectionHeading";
 
 export default function CareersPage() {
+  const [applyingFor, setApplyingFor] = useState(null);
+  const closeApply = useCallback(() => setApplyingFor(null), []);
+
   return (
     <>
       <PageHero
@@ -63,10 +69,10 @@ export default function CareersPage() {
           <div className="mt-14 space-y-4">
             {openRoles.map((role, i) => (
               <Reveal key={role.title} delay={i * 0.06}>
-                <Link
-                  to="/contact"
-                  state={{ message: `I'd like to apply for the ${role.title} role.` }}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 rounded-3xl border border-white/10 bg-surface p-6 sm:p-7 hover:border-brand/40 transition-colors"
+                <button
+                  type="button"
+                  onClick={() => setApplyingFor(role)}
+                  className="w-full text-left group flex flex-col sm:flex-row sm:items-center gap-4 rounded-3xl border border-white/10 bg-surface p-6 sm:p-7 hover:border-brand/40 transition-colors cursor-pointer"
                 >
                   <div className="flex-1">
                     <h3 className="font-display text-xl sm:text-2xl font-semibold group-hover:text-brand transition-colors">{role.title}</h3>
@@ -78,7 +84,7 @@ export default function CareersPage() {
                   <span className="inline-flex items-center gap-1.5 text-brand font-semibold">
                     Apply <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </span>
-                </Link>
+                </button>
               </Reveal>
             ))}
           </div>
@@ -91,6 +97,9 @@ export default function CareersPage() {
           </p>
         </div>
       </section>
+      <AnimatePresence>
+        {applyingFor && <ApplyModal key={applyingFor.title} role={applyingFor} onClose={closeApply} />}
+      </AnimatePresence>
     </>
   );
 }

@@ -118,7 +118,7 @@ const HeroSection = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                navigate("/contact", { state: { email: new FormData(e.currentTarget).get("email") } });
+                navigate("/book-meeting", { state: { email: new FormData(e.currentTarget).get("email") } });
               }}
               className="mt-10 [@media(max-height:820px)]:mt-6 flex flex-col sm:flex-row gap-3 max-w-xl"
             >

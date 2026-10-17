@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin, Twitter, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { services } from "../../data/siteContent";
+import NewsletterForm from "./NewsletterForm";
 
 const Footer = () => {
   return (
@@ -81,28 +82,7 @@ const Footer = () => {
               Get insights on AI, technology trends, and product engineering.
             </p>
 
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex gap-2"
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 min-w-0 bg-white/5 border border-white/10 
-                           rounded-lg px-4 py-2 text-sm 
-                           placeholder:text-slate-500
-                           focus:outline-none focus:ring-1 
-                           focus:ring-brand"
-              />
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-brand to-volt
-                           px-4 py-2 rounded-lg text-sm font-semibold 
-                           text-black hover:opacity-90 transition cursor-pointer"
-              >
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
 
         </div>

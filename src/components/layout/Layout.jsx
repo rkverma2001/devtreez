@@ -4,6 +4,7 @@ import { MotionConfig, motion, useScroll } from "motion/react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Seo from "../../seo/Seo";
+import ChatWidget from "../chat/ChatWidget";
 
 // Links pass the section to scroll to in navigation state (<Link state={{ scrollTo: "id" }}>),
 // so URLs stay clean (/services instead of /services#cloud-devops).
@@ -59,6 +60,7 @@ export default function Layout() {
       </main>
 
       <Footer />
+      <ChatWidget />
     </MotionConfig>
   );
 }

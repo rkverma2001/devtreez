@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, CheckCircle2, Clock, MessageSquare, Sparkles } from "lucide-react";
+import { ArrowRight, CalendarDays, CheckCircle2, Clock, Loader2, MessageSquare, Sparkles } from "lucide-react";
 import { faqs, services } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import HeadingBar from "../components/ui/HeadingBar";
+import Honeypot from "../components/ui/Honeypot";
+import { api } from "../lib/api";
 
 const budgets = ["Under ₹5L", "₹5L – ₹15L", "₹15L – ₹50L", "₹50L+", "Not sure yet"];
 
@@ -21,23 +23,35 @@ export default function ContactPage() {
     service: "",
     budget: "",
     message: state?.message ?? "",
+    website: "",
   });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [serverError, setServerError] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const next = {};
     if (!form.name.trim()) next.name = "Please tell us your name.";
     if (!/^\S+@\S+\.\S+$/.test(form.email)) next.email = "Please enter a valid email.";
     if (form.message.trim().length < 10) next.message = "A sentence or two about your project helps us prepare.";
     setErrors(next);
+    setServerError("");
     if (Object.keys(next).length) return;
-    // TODO: send `form` to a backend (e.g. Firebase Firestore or an email service). It is not delivered anywhere yet.
-    setSent(true);
+    setSending(true);
+    try {
+      await api.post("/api/leads", { ...form, source: "contact" });
+      setSent(true);
+    } catch (error) {
+      setErrors(error.fields);
+      setServerError(error.message);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -117,12 +131,35 @@ export default function ContactPage() {
                     />
                   </Field>
 
+                  <Honeypot value={form.website} onChange={update("website")} />
+
+                  {serverError && (
+                    <p role="alert" className="sm:col-span-2 rounded-xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm text-red-300">
+                      {serverError}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="sm:col-span-2 group flex items-center justify-center gap-2 bg-gradient-to-r from-brand to-volt px-7 py-4 rounded-full font-semibold text-black shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:shadow-[0_0_45px_rgba(181,242,61,0.6)] transition-all cursor-pointer"
+                    disabled={sending}
+                    className="sm:col-span-2 group flex items-center justify-center gap-2 bg-gradient-to-r from-brand to-volt px-7 py-4 rounded-full font-semibold text-black shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:shadow-[0_0_45px_rgba(181,242,61,0.6)] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-wait"
                   >
-                    Send message <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    {sending ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" /> Sending…
+                      </>
+                    ) : (
+                      <>
+                        Send message <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </button>
+                  <p className="sm:col-span-2 text-center text-sm text-gray-400">
+                    Prefer to talk?{" "}
+                    <Link to="/book-meeting" state={{ email: form.email }} className="inline-flex items-center gap-1 text-brand font-semibold hover:text-volt">
+                      <CalendarDays size={15} /> Book a free 30-minute call
+                    </Link>
+                  </p>
                 </motion.form>
               )}
             </AnimatePresence>

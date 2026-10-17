@@ -106,6 +106,12 @@ const pages = {
       },
     ],
   },
+  "/book-meeting": {
+    title: "Book a Free Discovery Call | devtreez",
+    description:
+      "Pick a time for a free 30-minute discovery call with devtreez to talk through your AI, web, app or cloud project.",
+    crumbs: [["Book a Meeting", "/book-meeting"]],
+  },
   "/privacy": { title: "Privacy Policy | devtreez", description: "How devtreez collects, uses and protects your personal information." },
   "/terms": { title: "Terms of Service | devtreez", description: "The terms that apply when you use the devtreez website." },
   "/cookies": { title: "Cookie Policy | devtreez", description: "How the devtreez website uses cookies and how you can manage them." },
