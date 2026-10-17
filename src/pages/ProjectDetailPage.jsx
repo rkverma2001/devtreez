@@ -7,6 +7,7 @@ import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
 import TechLogo from "../components/ui/TechLogo";
 import AnimatedUnderline from "../components/ui/AnimatedUnderline";
+import HeadingBar from "../components/ui/HeadingBar";
 import CtaSection from "../components/cta/CtaSection";
 import NotFoundPage from "./NotFoundPage";
 
@@ -113,6 +114,7 @@ export default function ProjectDetailPage() {
             <div className="h-full rounded-3xl border border-white/10 bg-surface p-8">
               <CardIcon className="text-brand" />
               <h3 className="mt-4 font-display text-2xl font-semibold">{title}</h3>
+              <HeadingBar className="mt-3 w-12" />
               <p className="mt-3 text-gray-400 leading-relaxed">{text}</p>
             </div>
           </Reveal>
@@ -120,6 +122,7 @@ export default function ProjectDetailPage() {
         <Reveal delay={0.2} className="md:col-span-2">
           <div className="rounded-3xl border border-white/10 bg-surface p-8">
             <h3 className="font-display text-2xl font-semibold">Key features</h3>
+            <HeadingBar className="mt-3 w-12" />
             <ul className="mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {project.features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-gray-300">

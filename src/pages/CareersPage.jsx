@@ -4,6 +4,7 @@ import { openRoles, perks } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
+import HeadingBar from "../components/ui/HeadingBar";
 import SectionHeading from "../components/ui/SectionHeading";
 
 export default function CareersPage() {
@@ -29,6 +30,7 @@ export default function CareersPage() {
             <div className="h-full rounded-3xl border border-white/10 bg-surface p-7 hover:border-brand/40 transition-colors">
               <Icon className="w-8 h-8 text-brand" />
               <h3 className="mt-5 font-display text-xl font-semibold">{title}</h3>
+              <HeadingBar className="mt-3 w-10" />
               <p className="mt-2 text-gray-400">{text}</p>
             </div>
           </Reveal>

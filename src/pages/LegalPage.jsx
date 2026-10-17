@@ -1,4 +1,5 @@
 import PageHero from "../components/ui/PageHero";
+import HeadingBar from "../components/ui/HeadingBar";
 
 // TODO: these are general starting templates, not legal advice. Have them reviewed before going live.
 const content = {
@@ -43,6 +44,7 @@ export default function LegalPage({ type }) {
         {page.sections.map(([heading, text]) => (
           <section key={heading}>
             <h2 className="font-display text-2xl font-semibold">{heading}</h2>
+            <HeadingBar className="mt-3 w-12" />
             <p className="mt-3 text-gray-400 leading-relaxed">{text}</p>
           </section>
         ))}

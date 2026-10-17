@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2, Clock, MessageSquare, Sparkles } from "lucide
 import { faqs, services } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
+import HeadingBar from "../components/ui/HeadingBar";
 
 const budgets = ["Under ₹5L", "₹5L – ₹15L", "₹15L – ₹50L", "₹50L+", "Not sure yet"];
 
@@ -152,6 +153,7 @@ export default function ContactPage() {
           <Reveal delay={0.2}>
             <div className="rounded-[2rem] border border-white/10 bg-surface p-7">
               <h3 className="font-display text-xl font-semibold">FAQ</h3>
+              <HeadingBar className="mt-3 w-10" />
               <div className="mt-4 divide-y divide-white/10">
                 {faqs.map((f, i) => (
                   <div key={f.q} className="py-3">

@@ -5,6 +5,7 @@ import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
 import TechLogo from "../components/ui/TechLogo";
+import HeadingBar from "../components/ui/HeadingBar";
 import ProcessSection from "../components/process/ProcessSection";
 import CtaSection from "../components/cta/CtaSection";
 
@@ -63,6 +64,7 @@ export default function ServicesPage() {
               <Reveal delay={0.15}>
                 <span className="text-brand text-xs font-semibold uppercase tracking-[0.2em]">Service {String(i + 1).padStart(2, "0")}</span>
                 <h2 className="mt-3 font-display text-4xl lg:text-5xl font-bold tracking-tight">{service.title}</h2>
+                <HeadingBar className="mt-4" />
                 <p className="mt-5 text-lg text-gray-400 leading-relaxed">{service.details}</p>
 
                 <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">What you get</h3>

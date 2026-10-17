@@ -5,6 +5,7 @@ import Reveal from "../components/ui/Reveal";
 import SectionHeading from "../components/ui/SectionHeading";
 import CtaSection from "../components/cta/CtaSection";
 import TechLogo from "../components/ui/TechLogo";
+import HeadingBar from "../components/ui/HeadingBar";
 
 export default function TechnologiesPage() {
   return (
@@ -45,6 +46,7 @@ export default function TechnologiesPage() {
                     Demo {String(i + 1).padStart(2, "0")} · {d.category}
                   </span>
                   <h2 className="mt-1 font-display text-3xl sm:text-4xl font-bold tracking-tight">{d.title}</h2>
+                  <HeadingBar className="mt-3" />
                   <p className="mt-2 text-gray-400">{d.description}</p>
                 </div>
               </Reveal>
@@ -69,6 +71,7 @@ export default function TechnologiesPage() {
               <Reveal key={cat.title} delay={(i % 3) * 0.1}>
                 <div className="h-full rounded-3xl border border-white/10 bg-surface p-7 hover:border-brand/40 transition-colors">
                   <h3 className="font-display text-xl font-semibold">{cat.title}</h3>
+                  <HeadingBar className="mt-3 w-10" />
                   <div className="mt-5 flex flex-wrap gap-2">
                     {cat.items.map((item) => (
                       <span

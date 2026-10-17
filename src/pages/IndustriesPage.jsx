@@ -4,6 +4,7 @@ import { industries, projects } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
+import HeadingBar from "../components/ui/HeadingBar";
 import CtaSection from "../components/cta/CtaSection";
 
 export default function IndustriesPage() {
@@ -40,7 +41,8 @@ export default function IndustriesPage() {
                     </span>
                     <h2 className="font-display text-2xl sm:text-3xl font-semibold">{name}</h2>
                   </div>
-                  <p className="mt-5 text-gray-400">{description}</p>
+                  <HeadingBar className="mt-5" />
+                  <p className="mt-4 text-gray-400">{description}</p>
                   <ul className="mt-5 space-y-2">
                     {useCases.map((u) => (
                       <li key={u} className="flex items-center gap-2.5 text-gray-300">

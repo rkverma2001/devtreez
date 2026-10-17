@@ -3,6 +3,7 @@ import { values } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
+import HeadingBar from "../components/ui/HeadingBar";
 import SectionHeading from "../components/ui/SectionHeading";
 import AboutSection from "../components/about/AboutSection";
 import ProcessSection from "../components/process/ProcessSection";
@@ -36,6 +37,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-brand/15 blur-3xl" />
               <Icon className="relative w-10 h-10 text-brand" />
               <h2 className="relative mt-6 font-display text-3xl font-bold">{title}</h2>
+              <HeadingBar className="relative mt-3" />
               <p className="relative mt-4 text-lg text-gray-400 leading-relaxed">{text}</p>
             </div>
           </Reveal>

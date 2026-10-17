@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 // Decorative animated objects for section backgrounds: wireframe cube, hexagon, ring,
 // twinkling crosses, dot grid and glowing orb. Desktop only, purely decorative.
 
-function Cube({ size = 115 }) {
+export function Cube({ size = 115 }) {
   const half = size / 2;
   const faces = [
     `rotateY(0deg) translateZ(${half}px)`,
@@ -29,7 +29,7 @@ function Cube({ size = 115 }) {
   );
 }
 
-function Hexagon({ size = 140 }) {
+export function Hexagon({ size = 140 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" className="animate-spin-slow">
       <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="rgba(34,211,238,0.45)" strokeWidth="1.5" />
@@ -40,7 +40,7 @@ function Hexagon({ size = 140 }) {
   );
 }
 
-function Ring({ size = 170 }) {
+export function Ring({ size = 170 }) {
   return (
     <div style={{ width: size, height: size, perspective: 500 }}>
       <div className="w-full h-full rounded-full border-2 border-volt/40 animate-ring [transform-style:preserve-3d] shadow-[0_0_30px_rgba(181,242,61,0.15)]">
@@ -50,7 +50,7 @@ function Ring({ size = 170 }) {
   );
 }
 
-function Crosses() {
+export function Crosses() {
   return (
     <div className="grid grid-cols-3 gap-6">
       {Array.from({ length: 6 }, (_, i) => (
@@ -67,7 +67,7 @@ function Crosses() {
   );
 }
 
-function Dots() {
+export function Dots() {
   return (
     <div className="grid grid-cols-6 gap-3 opacity-60">
       {Array.from({ length: 36 }, (_, i) => (
@@ -77,7 +77,7 @@ function Dots() {
   );
 }
 
-function Orb({ size = 80 }) {
+export function Orb({ size = 80 }) {
   return (
     <div
       className="rounded-full animate-float"
