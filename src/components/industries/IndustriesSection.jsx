@@ -3,11 +3,13 @@ import { ArrowRight } from "lucide-react";
 import { industries } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
 import Photo from "../ui/Photo";
+import FloatingShapes from "../ui/FloatingShapes";
 import SectionHeading from "../ui/SectionHeading";
 
 export default function IndustriesSection() {
   return (
     <section id="industries" className="relative py-28 lg:py-36 bg-surface/50 border-y border-white/5 scroll-mt-20">
+      <FloatingShapes preset="left" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeading
           eyebrow="Industries"

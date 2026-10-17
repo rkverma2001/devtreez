@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, Compass, Cpu, LineChart } from "lucide-react";
 import Photo from "../ui/Photo";
 import Reveal from "../ui/Reveal";
+import FloatingShapes from "../ui/FloatingShapes";
 import SectionHeading from "../ui/SectionHeading";
 
 const pillars = [
@@ -19,7 +20,8 @@ export default function ApproachSection() {
   const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
 
   return (
-    <section id="approach" ref={ref} className="relative py-28 lg:py-36 scroll-mt-10">
+    <section id="approach" ref={ref} className="relative pt-28 lg:pt-36 pb-12 lg:pb-16 scroll-mt-10">
+      <FloatingShapes preset="right" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
         {/* Collage */}
         <div className="relative h-[460px] sm:h-[560px]">

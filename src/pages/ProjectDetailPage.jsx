@@ -6,6 +6,7 @@ import { demos } from "../components/demos";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
 import TechLogo from "../components/ui/TechLogo";
+import AnimatedUnderline from "../components/ui/AnimatedUnderline";
 import CtaSection from "../components/cta/CtaSection";
 import NotFoundPage from "./NotFoundPage";
 
@@ -94,7 +95,7 @@ export default function ProjectDetailPage() {
         <Reveal>
           <span className="text-brand text-xs font-semibold uppercase tracking-[0.2em]">Try it yourself</span>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Interactive <span className="text-gradient">Demo</span>
+            Interactive <AnimatedUnderline>Demo</AnimatedUnderline>
           </h2>
         </Reveal>
         <Reveal delay={0.1} className="mt-10">

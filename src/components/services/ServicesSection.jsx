@@ -4,6 +4,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { services } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
 import Photo from "../ui/Photo";
+import FloatingShapes from "../ui/FloatingShapes";
 import TechLogo from "../ui/TechLogo";
 import { techLogos } from "../../data/techLogos";
 import SectionHeading from "../ui/SectionHeading";
@@ -90,7 +91,8 @@ function ServiceCard({ service, index }) {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative py-28 lg:py-36 scroll-mt-20">
+    <section id="services" className="relative pt-16 lg:pt-24 pb-28 lg:pb-36 scroll-mt-20">
+      <FloatingShapes preset="both" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/10 blur-[160px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">

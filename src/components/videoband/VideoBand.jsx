@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import BackgroundVideo from "../ui/BackgroundVideo";
+import AnimatedUnderline from "../ui/AnimatedUnderline";
 
 const tags = ["AI Engineering", "Software Development", "Cloud Platforms", "Digital Consulting"];
 
@@ -38,7 +39,7 @@ export default function VideoBand() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-5 font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1] max-w-4xl"
         >
-          Technology for a <span className="text-gradient">world in motion.</span>
+          Technology for a <AnimatedUnderline>world in motion.</AnimatedUnderline>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

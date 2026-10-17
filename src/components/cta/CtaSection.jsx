@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Reveal from "../ui/Reveal";
 import Photo from "../ui/Photo";
+import AnimatedUnderline from "../ui/AnimatedUnderline";
 
 export default function CtaSection() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function CtaSection() {
             <div className="relative">
               <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
                 Let's Build <br />
-                <span className="text-gradient">What's Next.</span>
+                <AnimatedUnderline>What's Next.</AnimatedUnderline>
               </h2>
               <p className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
                 Tell us about your idea. We'll show you how AI, cloud and great engineering can turn it into a product that scales.

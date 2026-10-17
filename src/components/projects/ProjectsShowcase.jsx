@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { projects } from "../../data/siteContent";
 import ProjectCard from "./ProjectCard";
+import AnimatedUnderline from "../ui/AnimatedUnderline";
 
 export default function ProjectsShowcase() {
   const sectionRef = useRef(null);
@@ -45,7 +46,7 @@ export default function ProjectsShowcase() {
               Featured Work
             </span>
             <h2 className="mt-3 font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Projects That <span className="text-gradient">Drive Results</span>
+              Projects That <AnimatedUnderline>Drive Results</AnimatedUnderline>
             </h2>
           </div>
 

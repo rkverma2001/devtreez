@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import AnimatedUnderline from "./AnimatedUnderline";
 
 export default function SectionHeading({ eyebrow, title, highlight, description, align = "center" }) {
   const alignment = align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
@@ -11,7 +12,7 @@ export default function SectionHeading({ eyebrow, title, highlight, description,
       </span>
 
       <h2 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-        {title} <span className="text-gradient">{highlight}</span>
+        {title} <AnimatedUnderline>{highlight}</AnimatedUnderline>
       </h2>
 
       {description && (

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import Photo from "./Photo";
+import AnimatedUnderline from "./AnimatedUnderline";
 import BackgroundVideo from "./BackgroundVideo";
 
 export default function PageHero({ eyebrow, title, highlight, description, image, imageAlt = "", video, children }) {
@@ -52,7 +53,7 @@ export default function PageHero({ eyebrow, title, highlight, description, image
           transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
         >
-          {title} <span className="text-gradient">{highlight}</span>
+          {title} <AnimatedUnderline animateOnMount>{highlight}</AnimatedUnderline>
         </motion.h1>
 
         {description && (
