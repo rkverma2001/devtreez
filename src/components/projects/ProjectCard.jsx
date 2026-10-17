@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, PlayCircle } from "lucide-react";
 import Photo from "../ui/Photo";
+import TechLogo from "../ui/TechLogo";
 
 export default function ProjectCard({ project, index, className = "" }) {
   const Icon = project.icon;
@@ -45,7 +46,8 @@ export default function ProjectCard({ project, index, className = "" }) {
         <p className="mt-3 text-gray-400 leading-relaxed">{project.description}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
+            <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
+              <TechLogo name={tag} className="w-3.5 h-3.5" />
               {tag}
             </span>
           ))}

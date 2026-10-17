@@ -5,6 +5,7 @@ import { projects } from "../data/siteContent";
 import { demos } from "../components/demos";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
+import TechLogo from "../components/ui/TechLogo";
 import CtaSection from "../components/cta/CtaSection";
 import NotFoundPage from "./NotFoundPage";
 
@@ -68,7 +69,8 @@ export default function ProjectDetailPage() {
               </motion.p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {project.tags.map((t) => (
-                  <span key={t} className="px-3 py-1 rounded-full bg-ink/60 border border-white/15 text-xs">
+                  <span key={t} className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ink/60 backdrop-blur-md border border-white/15 text-sm">
+                    <TechLogo name={t} className="w-4 h-4" />
                     {t}
                   </span>
                 ))}

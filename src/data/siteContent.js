@@ -75,7 +75,7 @@ export const services = [
     details:
       "We build assistants grounded in your own documents and systems: support copilots, internal knowledge search and agents that complete multi-step tasks, with guardrails, evaluation and human review built in.",
     deliverables: ["Use-case discovery workshop", "RAG & agent architecture", "Prompt & evaluation suites", "Secure deployment"],
-    tech: ["OpenAI", "Claude", "LangChain", "Vector DBs", "FastAPI"],
+    tech: ["OpenAI", "Claude", "LangChain", "Hugging Face", "FastAPI"],
     demo: "sentiment",
   },
   {
@@ -89,7 +89,7 @@ export const services = [
     details:
       "High-performance marketing sites, portals and online stores with motion-rich design, editor-friendly CMS and Core Web Vitals tuned from day one.",
     deliverables: ["UX & visual design", "Responsive development", "CMS integration", "SEO & analytics setup"],
-    tech: ["React", "Next.js", "Tailwind CSS", "Headless CMS", "Vercel"],
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     demo: null,
   },
   {
@@ -103,7 +103,7 @@ export const services = [
     details:
       "Product teams that take you from MVP to scale: cross-platform mobile apps, SaaS platforms and internal tools with clean architecture and automated testing.",
     deliverables: ["Product strategy & MVP scope", "Mobile & web apps", "APIs & integrations", "App store launch"],
-    tech: ["Flutter", "React Native", "Node.js", "Firebase", "PostgreSQL"],
+    tech: ["Flutter", "React Native", "Swift", "Kotlin", "Firebase"],
     demo: null,
   },
   {
@@ -117,7 +117,7 @@ export const services = [
     details:
       "Cloud-native infrastructure that scales automatically with demand and keeps costs in check, with infrastructure-as-code, CI/CD and observability.",
     deliverables: ["Cloud architecture design", "Migration & modernisation", "CI/CD pipelines", "Cost optimisation"],
-    tech: ["AWS", "Azure", "Google Cloud", "Kubernetes", "Terraform"],
+    tech: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform"],
     demo: "autoscaling",
   },
   {
@@ -131,7 +131,7 @@ export const services = [
     details:
       "Modern data stacks that unify your sources, real-time dashboards for every team and anomaly detection that flags problems before your customers notice.",
     deliverables: ["Data warehouse design", "ETL / streaming pipelines", "BI dashboards", "Anomaly alerting"],
-    tech: ["BigQuery", "Snowflake", "dbt", "Kafka", "Power BI"],
+    tech: ["BigQuery", "Snowflake", "Kafka", "PostgreSQL", "Python"],
     demo: "live-analytics",
   },
 ];

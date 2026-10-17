@@ -4,6 +4,7 @@ import { services, techDemos } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import Photo from "../components/ui/Photo";
+import TechLogo from "../components/ui/TechLogo";
 import ProcessSection from "../components/process/ProcessSection";
 import CtaSection from "../components/cta/CtaSection";
 
@@ -76,7 +77,8 @@ export default function ServicesPage() {
 
                 <div className="mt-8 flex flex-wrap gap-2">
                   {service.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
+                    <span key={t} className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 hover:border-white/25 hover:text-white transition-colors">
+                      <TechLogo name={t} className="w-4 h-4" />
                       {t}
                     </span>
                   ))}

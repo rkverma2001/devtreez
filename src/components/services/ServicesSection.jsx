@@ -4,6 +4,8 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { services } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
 import Photo from "../ui/Photo";
+import TechLogo from "../ui/TechLogo";
+import { techLogos } from "../../data/techLogos";
 import SectionHeading from "../ui/SectionHeading";
 
 function ServiceCard({ service, index }) {
@@ -59,9 +61,20 @@ function ServiceCard({ service, index }) {
             ))}
           </ul>
 
+          <div className="mt-7 pt-5 border-t border-white/10 flex items-center gap-3.5">
+            {service.tech
+              .filter((t) => techLogos[t])
+              .map((t) => (
+                <span key={t} title={t} className="inline-flex">
+                  <TechLogo name={t} className="w-5 h-5" />
+                  <span className="sr-only">{t}</span>
+                </span>
+              ))}
+          </div>
+
           <Link
             to={`/services#${service.slug}`}
-            className="mt-8 inline-flex items-center gap-1.5 text-brand font-semibold"
+            className="mt-6 inline-flex items-center gap-1.5 text-brand font-semibold"
           >
             Explore More
             <ArrowUpRight
