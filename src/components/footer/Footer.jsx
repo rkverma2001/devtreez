@@ -46,7 +46,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/services#${s.slug}`} className="hover:text-brand transition-colors">{s.title}</Link>
+                  <Link to="/services" state={{ scrollTo: s.slug }} className="hover:text-brand transition-colors">{s.title}</Link>
                 </li>
               ))}
             </ul>

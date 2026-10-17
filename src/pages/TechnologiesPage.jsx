@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { techCategories, techDemos } from "../data/siteContent";
 import { demos } from "../components/demos";
 import PageHero from "../components/ui/PageHero";
@@ -21,13 +22,14 @@ export default function TechnologiesPage() {
       >
         <div className="flex flex-wrap justify-center gap-2">
           {techDemos.map((d) => (
-            <a
+            <Link
               key={d.key}
-              href={`#${d.key}`}
+              to="/technologies"
+              state={{ scrollTo: d.key }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-sm text-gray-300 hover:border-brand/50 hover:text-brand transition-colors"
             >
               <d.icon size={16} /> {d.title}
-            </a>
+            </Link>
           ))}
         </div>
       </PageHero>

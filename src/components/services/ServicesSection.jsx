@@ -73,7 +73,8 @@ function ServiceCard({ service, index }) {
           </div>
 
           <Link
-            to={`/services#${service.slug}`}
+            to="/services"
+            state={{ scrollTo: service.slug }}
             className="mt-6 inline-flex items-center gap-1.5 text-brand font-semibold"
           >
             Explore More

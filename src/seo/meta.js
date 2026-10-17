@@ -1,7 +1,6 @@
 import { faqs, projects, services } from "../data/siteContent";
 
-// TODO: change to the custom domain (e.g. https://www.devtreez.com) once it is connected in Firebase Hosting.
-export const SITE_URL = "https://devtreez.web.app";
+export const SITE_URL = "https://www.devtreez.com";
 export const SITE_NAME = "devtreez";
 const OG_IMAGE = `${SITE_URL}/images/og-image.png`;
 

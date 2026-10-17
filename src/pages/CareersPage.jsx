@@ -19,9 +19,9 @@ export default function CareersPage() {
         highlight="With Us"
         description="Join a team of engineers, designers and AI specialists shipping products used around the world."
       >
-        <a href="#roles" className="inline-flex items-center gap-2 bg-brand hover:bg-volt text-black font-semibold px-7 py-3.5 rounded-full transition-colors">
+        <Link to="/careers" state={{ scrollTo: "roles" }} className="inline-flex items-center gap-2 bg-brand hover:bg-volt text-black font-semibold px-7 py-3.5 rounded-full transition-colors">
           See open roles <ArrowUpRight size={18} />
-        </a>
+        </Link>
       </PageHero>
 
       <section className="max-w-7xl mx-auto px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

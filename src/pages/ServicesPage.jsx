@@ -23,13 +23,14 @@ export default function ServicesPage() {
       >
         <div className="flex flex-wrap justify-center gap-2">
           {services.map((s) => (
-            <a
+            <Link
               key={s.slug}
-              href={`#${s.slug}`}
+              to="/services"
+              state={{ scrollTo: s.slug }}
               className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-sm text-gray-300 hover:border-brand/50 hover:text-brand transition-colors"
             >
               {s.title}
-            </a>
+            </Link>
           ))}
         </div>
       </PageHero>
@@ -95,7 +96,8 @@ export default function ServicesPage() {
                   </Link>
                   {demo && (
                     <Link
-                      to={`/technologies#${demo.key}`}
+                      to="/technologies"
+                      state={{ scrollTo: demo.key }}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 hover:border-brand/50 hover:text-brand transition-colors"
                     >
                       <PlayCircle size={18} /> Try the {demo.title} demo

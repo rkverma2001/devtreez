@@ -5,25 +5,32 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Seo from "../../seo/Seo";
 
+// Links pass the section to scroll to in navigation state (<Link state={{ scrollTo: "id" }}>),
+// so URLs stay clean (/services instead of /services#cloud-devops).
 function ScrollManager() {
-  const { pathname, hash } = useLocation();
+  const { pathname, search, hash, state, key } = useLocation();
+  const target = state?.scrollTo ?? (hash ? decodeURIComponent(hash.slice(1)) : null);
 
   useEffect(() => {
-    if (!hash) {
+    if (!target) {
       window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
-    // Pages load lazily, so keep looking for the anchor for a moment.
+    // Old #hash links still work; drop the hash from the address bar.
+    if (window.location.hash) {
+      window.history.replaceState(window.history.state, "", pathname + search);
+    }
+    // Pages load lazily, so keep looking for the section for a moment.
     let tries = 0;
     let frame;
     const find = () => {
-      const el = document.getElementById(hash.slice(1));
+      const el = document.getElementById(target);
       if (el) el.scrollIntoView({ behavior: "smooth" });
       else if (tries++ < 90) frame = requestAnimationFrame(find);
     };
     find();
     return () => cancelAnimationFrame(frame);
-  }, [pathname, hash]);
+  }, [pathname, search, target, key]);
 
   return null;
 }
