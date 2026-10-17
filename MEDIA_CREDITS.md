@@ -48,6 +48,8 @@ Clips in `public/videos/` are from [Mixkit](https://mixkit.co) under the Mixkit 
 | `programmer.mp4` | https://mixkit.co/free-stock-video/experienced-programmer-working-on-a-powerful-computer-41656/ |
 | `coworkers.mp4` | https://mixkit.co/free-stock-video/two-coworkers-talking-and-laughing-4872/ |
 | `typing.mp4` | https://mixkit.co/free-stock-video/typing-on-a-laptop-242/ |
+| `vision.mp4` | https://mixkit.co/free-stock-video/a-woman-wearign-a-futuristic-vr-glasses-concentrates-on-the-51214/ |
+| `lasers.mp4` | https://mixkit.co/free-stock-video/futuristic-looking-man-using-sunglasses-is-surrounded-by-lasers-50499/ |
 
 ## Technology logos
 

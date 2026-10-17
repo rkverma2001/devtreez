@@ -16,7 +16,7 @@ export default function VideoBand() {
   return (
     <section ref={ref} className="relative h-[85vh] min-h-[560px] overflow-hidden">
       <motion.div style={{ scale }} className="absolute inset-0">
-        <BackgroundVideo name="city" className="w-full h-full object-cover" controlsClassName="bottom-8 right-8" />
+        <BackgroundVideo name="lasers" className="w-full h-full object-cover" controlsClassName="bottom-8 right-8" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/40 to-ink pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-transparent pointer-events-none" />
