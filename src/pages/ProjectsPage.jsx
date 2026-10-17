@@ -15,6 +15,8 @@ export default function ProjectsPage() {
     <>
       <PageHero
         eyebrow="Our Work"
+        image="teamwork"
+        imageAlt="Overhead view of a team working on laptops"
         title="Projects With"
         highlight="Live Demos"
         description="Explore what we build. Every project below has an interactive demo you can try right in your browser."

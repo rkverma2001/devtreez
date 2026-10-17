@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Reveal from "../ui/Reveal";
+import Photo from "../ui/Photo";
 
 export default function CtaSection() {
   const navigate = useNavigate();
@@ -10,7 +11,9 @@ export default function CtaSection() {
       <Reveal className="max-w-6xl mx-auto">
         <div className="relative rounded-[2.5rem] p-[1px] bg-gradient-to-r from-brand via-volt to-aqua bg-[length:300%_100%] animate-gradient">
           <div className="relative rounded-[2.5rem] bg-ink overflow-hidden px-6 py-16 sm:px-16 sm:py-24 text-center">
-            <div className="absolute inset-0 bg-grid opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+            <Photo name="earth" alt="" sizes="(min-width: 1152px) 1152px, 100vw" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/60 to-ink/90" />
+            <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand/25 blur-[120px]" />
 
             <div className="relative">

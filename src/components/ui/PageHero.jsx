@@ -1,8 +1,22 @@
 import { motion } from "motion/react";
+import Photo from "./Photo";
 
-export default function PageHero({ eyebrow, title, highlight, description, children }) {
+export default function PageHero({ eyebrow, title, highlight, description, image, imageAlt = "", children }) {
   return (
     <section className="relative pt-44 pb-20 lg:pt-52 lg:pb-28 overflow-hidden">
+      {image && (
+        <>
+          <motion.div
+            initial={{ scale: 1.12 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0"
+          >
+            <Photo name={image} alt={imageAlt} sizes="100vw" priority className="w-full h-full object-cover" />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/75 to-ink" />
+        </>
+      )}
       <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
       <div className="absolute -top-40 left-1/4 w-[500px] h-[500px] rounded-full bg-brand/20 blur-[140px] animate-blob" />
       <div className="absolute -top-20 right-0 w-[420px] h-[420px] rounded-full bg-aqua/15 blur-[140px] animate-blob [animation-delay:-6s]" />

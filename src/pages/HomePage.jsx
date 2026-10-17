@@ -1,5 +1,6 @@
 import HeroSection from "../components/hero/HeroSection";
 import TechMarquee from "../components/marquee/TechMarquee";
+import ApproachSection from "../components/approach/ApproachSection";
 import ServicesSection from "../components/services/ServicesSection";
 import ProjectsShowcase from "../components/projects/ProjectsShowcase";
 import AboutSection from "../components/about/AboutSection";
@@ -12,6 +13,7 @@ const HomePage = () => {
     <>
       <HeroSection />
       <TechMarquee />
+      <ApproachSection />
       <ServicesSection />
       <ProjectsShowcase />
       <AboutSection />

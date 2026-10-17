@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Target, Lightbulb } from "lucide-react";
 import { projects } from "../data/siteContent";
 import { demos } from "../components/demos";
 import Reveal from "../components/ui/Reveal";
+import Photo from "../components/ui/Photo";
 import CtaSection from "../components/cta/CtaSection";
 import NotFoundPage from "./NotFoundPage";
 
@@ -21,8 +22,18 @@ export default function ProjectDetailPage() {
   return (
     <>
       {/* Hero */}
-      <section className={`relative pt-40 pb-20 lg:pt-48 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
-        <div className="absolute inset-0 bg-ink/70" />
+      <section className="relative pt-40 pb-20 lg:pt-48 overflow-hidden">
+        <motion.div
+          key={project.slug}
+          initial={{ scale: 1.12 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
+        >
+          <Photo name={project.image} alt={project.imageAlt} sizes="100vw" priority className="w-full h-full object-cover" />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/10" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">

@@ -3,6 +3,7 @@ import { ArrowUpRight, Briefcase, MapPin } from "lucide-react";
 import { openRoles, perks } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
+import Photo from "../components/ui/Photo";
 import SectionHeading from "../components/ui/SectionHeading";
 
 export default function CareersPage() {
@@ -10,6 +11,8 @@ export default function CareersPage() {
     <>
       <PageHero
         eyebrow="Careers"
+        image="team"
+        imageAlt="Developers working together on laptops"
         title="Build The Future"
         highlight="With Us"
         description="Join a team of engineers, designers and AI specialists shipping products used around the world."
@@ -26,6 +29,26 @@ export default function CareersPage() {
               <Icon className="w-8 h-8 text-brand" />
               <h3 className="mt-5 font-display text-xl font-semibold">{title}</h3>
               <p className="mt-2 text-gray-400">{text}</p>
+            </div>
+          </Reveal>
+        ))}
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 mt-6 grid grid-cols-2 md:grid-cols-3 gap-5">
+        {[
+          ["developers", "Engineers reviewing code together"],
+          ["workshop", "Product workshop at a whiteboard"],
+          ["collab", "Colleagues collaborating at a laptop"],
+        ].map(([name, alt], i) => (
+          <Reveal key={name} delay={i * 0.1} className={i === 2 ? "col-span-2 md:col-span-1" : ""}>
+            <div className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10">
+              <Photo
+                name={name}
+                alt={alt}
+                sizes="(min-width: 768px) 33vw, 50vw"
+                className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
             </div>
           </Reveal>
         ))}

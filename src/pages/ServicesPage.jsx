@@ -3,6 +3,7 @@ import { ArrowRight, Check, PlayCircle } from "lucide-react";
 import { services, techDemos } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
+import Photo from "../components/ui/Photo";
 import ProcessSection from "../components/process/ProcessSection";
 import CtaSection from "../components/cta/CtaSection";
 
@@ -11,6 +12,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Solutions"
+        image="workshop"
+        imageAlt="Team planning a project with sticky notes on a whiteboard"
         title="Everything You Need To"
         highlight="Build With AI"
         description="Six practices, one team. From your first website to enterprise-scale AI, we design, build and run the technology that grows your business."
@@ -39,17 +42,19 @@ export default function ServicesPage() {
               className={`scroll-mt-32 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
             >
               <Reveal>
-                <div className="relative aspect-[4/3] rounded-[2rem] border border-white/10 bg-surface overflow-hidden flex items-center justify-center group">
-                  <div className="absolute inset-0 bg-grid opacity-50" />
-                  <div className="absolute w-72 h-72 rounded-full bg-brand/20 blur-[90px]" />
-                  <div className="absolute w-64 h-64 rounded-full border border-dashed border-brand/30 animate-spin-slow" />
-                  <div className="absolute w-44 h-44 rounded-full border border-aqua/20 animate-spin-slow [animation-direction:reverse]" />
-                  <div className="relative w-28 h-28 rounded-[2rem] bg-gradient-to-br from-brand/30 to-aqua/20 border border-white/15 backdrop-blur-md flex items-center justify-center animate-float">
-                    <Icon className="w-14 h-14 text-brand" />
+                <div className="relative aspect-[4/3] rounded-[2rem] border border-white/10 bg-surface overflow-hidden group">
+                  <Photo
+                    name={service.image}
+                    alt={service.imageAlt}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/20 to-transparent" />
+                  <div className="absolute bottom-6 left-6 flex items-center gap-4">
+                    <span className="w-16 h-16 rounded-2xl bg-ink/70 backdrop-blur-md border border-white/15 flex items-center justify-center">
+                      <Icon className="w-8 h-8 text-brand" />
+                    </span>
+                    <span className="font-display text-6xl font-bold text-white/30">{String(i + 1).padStart(2, "0")}</span>
                   </div>
-                  <span className="absolute bottom-6 left-8 font-display text-8xl font-bold text-white/5">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                 </div>
               </Reveal>
 

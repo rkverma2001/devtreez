@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { services } from "../../data/siteContent";
 import Reveal from "../ui/Reveal";
+import Photo from "../ui/Photo";
 import SectionHeading from "../ui/SectionHeading";
 
 function ServiceCard({ service, index }) {
@@ -20,7 +21,7 @@ function ServiceCard({ service, index }) {
       <div
         ref={ref}
         onMouseMove={handleMouseMove}
-        className="group relative h-full rounded-3xl border border-white/10 bg-surface p-8 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-brand/40 hover:shadow-[0_20px_60px_-20px_rgba(34,197,94,0.35)]"
+        className="group relative h-full rounded-3xl border border-white/10 bg-surface overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-brand/40 hover:shadow-[0_20px_60px_-20px_rgba(34,197,94,0.35)]"
       >
         {/* Cursor spotlight */}
         <div
@@ -31,8 +32,18 @@ function ServiceCard({ service, index }) {
           }}
         />
 
-        <div className="relative">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand/25 to-aqua/20 border border-white/10 flex items-center justify-center mb-7 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+        <div className="relative h-44 overflow-hidden">
+          <Photo
+            name={service.image}
+            alt={service.imageAlt}
+            sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+            className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent" />
+        </div>
+
+        <div className="relative px-8 pb-8 -mt-10">
+          <div className="w-14 h-14 rounded-2xl bg-ink border border-white/15 flex items-center justify-center mb-6 shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
             <Icon className="w-7 h-7 text-brand" />
           </div>
 

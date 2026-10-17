@@ -10,6 +10,8 @@ export default function TechnologiesPage() {
     <>
       <PageHero
         eyebrow="Technology Lab"
+        image="circuit"
+        imageAlt="Close-up of a computer circuit board"
         title="See Our Tech"
         highlight="In Action"
         description="Don't just read about AI, cloud and data. Play with them. These live demos run right in your browser."

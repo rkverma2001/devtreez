@@ -52,6 +52,8 @@ export const stats = [
 export const services = [
   {
     slug: "ai-machine-learning",
+    image: "ai-ml",
+    imageAlt: "Glowing circuit board representing machine learning hardware",
     icon: Brain,
     title: "AI & Machine Learning",
     description: "Predictive models and intelligent automation trained on your data.",
@@ -64,6 +66,8 @@ export const services = [
   },
   {
     slug: "generative-ai",
+    image: "genai",
+    imageAlt: "3D render of the letters AI on a digital network",
     icon: Sparkles,
     title: "Generative AI & Agents",
     description: "LLM copilots, chatbots and AI agents that work alongside your team.",
@@ -76,6 +80,8 @@ export const services = [
   },
   {
     slug: "website-development",
+    image: "web-dev",
+    imageAlt: "Website source code on a laptop screen",
     icon: Globe,
     title: "Website Development",
     description: "Your brand, beautifully built online: fast, secure and SEO-ready.",
@@ -88,6 +94,8 @@ export const services = [
   },
   {
     slug: "application-development",
+    image: "app-dev",
+    imageAlt: "Person using a mobile app alongside a laptop",
     icon: Smartphone,
     title: "Application Development",
     description: "Apps that bring your vision to every screen, iOS, Android and web.",
@@ -100,6 +108,8 @@ export const services = [
   },
   {
     slug: "cloud-devops",
+    image: "cloud",
+    imageAlt: "Server racks with network cabling in a data centre",
     icon: Cloud,
     title: "Cloud & DevOps",
     description: "Scalable cloud architecture with automated delivery pipelines.",
@@ -112,6 +122,8 @@ export const services = [
   },
   {
     slug: "data-analytics",
+    image: "data",
+    imageAlt: "Analytics dashboard with charts on a monitor",
     icon: BarChart3,
     title: "Data & Analytics",
     description: "Turn raw data into dashboards and decisions your teams trust.",
@@ -128,6 +140,8 @@ export const services = [
 export const projects = [
   {
     slug: "ai-support-copilot",
+    image: "support",
+    imageAlt: "Support headset beside a laptop on a desk",
     icon: Bot,
     category: "Generative AI",
     title: "AI Support Copilot",
@@ -141,6 +155,8 @@ export const projects = [
   },
   {
     slug: "connected-fleet-dashboard",
+    image: "fleet",
+    imageAlt: "Truck driving along a mountain highway",
     icon: Car,
     category: "Automotive IoT",
     title: "Connected Fleet Dashboard",
@@ -154,6 +170,8 @@ export const projects = [
   },
   {
     slug: "diagnostic-imaging-assistant",
+    image: "xray",
+    imageAlt: "X-ray images on a light board",
     icon: ScanLine,
     category: "Healthcare AI",
     title: "Diagnostic Imaging Assistant",
@@ -167,6 +185,8 @@ export const projects = [
   },
   {
     slug: "personalised-commerce-platform",
+    image: "ecommerce",
+    imageAlt: "Shopper paying online with a card and laptop",
     icon: ShoppingBag,
     category: "E-commerce",
     title: "Personalised Commerce Platform",
@@ -180,6 +200,8 @@ export const projects = [
   },
   {
     slug: "invoice-automation-suite",
+    image: "finance-docs",
+    imageAlt: "Invoices and tax forms with a calculator",
     icon: Receipt,
     category: "Fintech",
     title: "Invoice Automation Suite",
@@ -193,6 +215,8 @@ export const projects = [
   },
   {
     slug: "adaptive-learning-app",
+    image: "elearning",
+    imageAlt: "Student taking notes while studying",
     icon: GraduationCap,
     category: "EdTech",
     title: "Adaptive Learning App",
@@ -241,6 +265,8 @@ export const industries = [
   {
     icon: Car,
     name: "Automotive",
+    image: "automotive",
+    imageAlt: "Sports car driving on a highway",
     description: "Connected vehicles, telematics and predictive maintenance.",
     useCases: ["Fleet tracking", "Predictive maintenance", "Dealer & service apps"],
     projectSlug: "connected-fleet-dashboard",
@@ -248,6 +274,8 @@ export const industries = [
   {
     icon: HeartPulse,
     name: "Healthcare",
+    image: "healthcare",
+    imageAlt: "Doctor with a stethoscope using a smartphone",
     description: "Clinical AI, patient apps and secure health data platforms.",
     useCases: ["Imaging AI", "Telehealth apps", "Patient portals"],
     projectSlug: "diagnostic-imaging-assistant",
@@ -255,6 +283,8 @@ export const industries = [
   {
     icon: Landmark,
     name: "Banking & Fintech",
+    image: "finance-city",
+    imageAlt: "Glass skyscrapers in a financial district",
     description: "Automation, fraud detection and digital banking experiences.",
     useCases: ["Document AI", "Fraud detection", "Digital onboarding"],
     projectSlug: "invoice-automation-suite",
@@ -262,6 +292,8 @@ export const industries = [
   {
     icon: ShoppingBag,
     name: "Retail & E-commerce",
+    image: "retail",
+    imageAlt: "Modern clothing store interior",
     description: "Personalised storefronts and demand-aware operations.",
     useCases: ["Recommendations", "Headless commerce", "Demand forecasting"],
     projectSlug: "personalised-commerce-platform",
@@ -269,6 +301,8 @@ export const industries = [
   {
     icon: GraduationCap,
     name: "Education",
+    image: "education",
+    imageAlt: "Books, an apple and alphabet blocks on a desk",
     description: "Adaptive learning platforms and AI tutors.",
     useCases: ["Adaptive learning", "LMS platforms", "AI tutors"],
     projectSlug: "adaptive-learning-app",
@@ -276,6 +310,8 @@ export const industries = [
   {
     icon: Truck,
     name: "Logistics",
+    image: "logistics",
+    imageAlt: "Large warehouse with shelves of parcels",
     description: "Route optimisation, tracking and warehouse intelligence.",
     useCases: ["Route optimisation", "Shipment tracking", "Warehouse analytics"],
     projectSlug: "connected-fleet-dashboard",
@@ -283,6 +319,8 @@ export const industries = [
   {
     icon: Factory,
     name: "Manufacturing",
+    image: "manufacturing",
+    imageAlt: "Engineer working in a hardware lab",
     description: "Computer vision for quality and IoT for uptime.",
     useCases: ["Defect detection", "IoT monitoring", "Production analytics"],
     projectSlug: null,
@@ -290,6 +328,8 @@ export const industries = [
   {
     icon: Building2,
     name: "Real Estate",
+    image: "real-estate",
+    imageAlt: "House model with keys on a table",
     description: "Property platforms, virtual tours and lead intelligence.",
     useCases: ["Listing platforms", "Lead scoring", "Virtual tours"],
     projectSlug: null,
