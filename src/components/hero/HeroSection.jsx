@@ -1,16 +1,23 @@
 import { Fragment, useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Cpu, Cloud, Smartphone } from "lucide-react";
 import HeroReel from "./HeroReel";
 
 const headline = [["Growing", "Ideas"], ["Into", "Global"], ["Innovations"]];
 const rotatingWords = ["Websites", "Mobile Apps", "AI Agents", "Cloud Platforms"];
 
+const floatingChips = [
+  { icon: Cpu, label: "Generative AI", className: "top-[8%] -left-2 sm:left-0", delay: "0s" },
+  { icon: Cloud, label: "Cloud Native", className: "top-[45%] -right-2 sm:right-0", delay: "-2s" },
+  { icon: Smartphone, label: "Apps & Web", className: "bottom-[6%] left-[8%]", delay: "-4s" },
+];
+
 const HeroSection = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const navigate = useNavigate();
   const { scrollY } = useScroll();
+  const visualY = useTransform(scrollY, [0, 700], [0, 140]);
   const contentY = useTransform(scrollY, [0, 700], [0, -80]);
   const fade = useTransform(scrollY, [0, 550], [1, 0]);
 
@@ -31,17 +38,19 @@ const HeroSection = () => {
     >
       {/* Cinematic video reel */}
       <HeroReel />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-ink/30 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none [mask-image:linear-gradient(to_right,black,transparent_60%)]" />
-      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand/20 blur-[140px] animate-blob pointer-events-none" />
+      <div className="absolute inset-0 bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
+      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand/25 blur-[140px] animate-blob pointer-events-none" />
+      <div className="absolute top-1/4 -right-40 w-[520px] h-[520px] rounded-full bg-aqua/20 blur-[140px] animate-blob [animation-delay:-5s] pointer-events-none" />
+      <div className="absolute -bottom-20 left-1/3 w-[420px] h-[420px] rounded-full bg-volt/10 blur-[120px] animate-blob [animation-delay:-9s] pointer-events-none" />
 
       <motion.div
         style={{ y: contentY, opacity: fade }}
-        className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full"
+        className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-8 items-center"
       >
         {/* Content */}
-        <div className="max-w-3xl">
+        <div className="order-2 lg:order-1">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +64,7 @@ const HeroSection = () => {
             AI-First Technology Company
           </motion.span>
 
-          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-8xl lg:[@media(max-height:820px)]:text-7xl font-bold leading-[1.02] tracking-tight">
+          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-bold leading-[1.02] tracking-tight">
             {headline.map((line, lineIndex) => (
               <span key={lineIndex} className="block">
                 {line.map((word) => {
@@ -138,6 +147,44 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
+        {/* Visual: circuit tree hologram */}
+        <motion.div
+          style={{ y: visualY }}
+          className="order-1 lg:order-2 relative flex justify-center items-center"
+        >
+          <div className="absolute w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-brand/40 animate-spin-slow" />
+          <div className="absolute w-[190px] h-[190px] sm:w-[320px] sm:h-[320px] rounded-full border border-aqua/30 animate-spin-slow [animation-direction:reverse]" />
+          <div className="absolute w-[260px] h-[260px] rounded-full bg-brand/25 blur-[90px]" />
+
+          <motion.img
+            src="/images/devtreez-tree.webp"
+            alt="devtreez circuit tree: ideas growing into AI-powered products"
+            width="840"
+            height="1008"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-[200px] sm:w-[320px] lg:w-[380px] [@media(max-height:820px)]:lg:w-[320px] h-auto animate-float mix-blend-screen drop-shadow-[0_0_50px_rgba(34,197,94,0.55)]"
+          />
+
+          {floatingChips.map(({ icon: Icon, label, className, delay }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1 + i * 0.2, duration: 0.6 }}
+              className={`absolute hidden sm:block ${className}`}
+            >
+              <div
+                className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-ink/70 backdrop-blur-md border border-white/15 text-sm font-medium shadow-xl animate-float"
+                style={{ animationDelay: delay }}
+              >
+                <Icon size={16} className="text-brand" />
+                {label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.div>
 
     </section>
