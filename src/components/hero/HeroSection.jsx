@@ -64,14 +64,14 @@ const HeroSection = () => {
             AI-First Technology Company
           </motion.span>
 
-          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-bold leading-[1.02] tracking-tight">
+          <h1 className="mt-5 font-display text-[2.6rem] sm:text-6xl lg:text-[clamp(3.25rem,min(5vw,8.2vh),5rem)] font-bold leading-[1.06] tracking-tight">
             {headline.map((line, lineIndex) => (
               <span key={lineIndex} className="block">
                 {line.map((word) => {
                   const delay = 0.4 + wordCount++ * 0.09;
                   return (
                     <Fragment key={word}>
-                      <span className="inline-block overflow-hidden align-bottom">
+                      <span className="inline-block overflow-hidden align-bottom pb-[0.16em] -mb-[0.16em]">
                         <motion.span
                           initial={{ y: "110%" }}
                           animate={{ y: 0 }}
@@ -150,7 +150,7 @@ const HeroSection = () => {
         {/* Visual: circuit tree hologram */}
         <motion.div
           style={{ y: visualY }}
-          className="order-1 lg:order-2 relative flex justify-center items-center"
+          className="order-1 lg:order-2 relative hidden sm:flex justify-center items-center"
         >
           <div className="absolute w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-brand/40 animate-spin-slow" />
           <div className="absolute w-[190px] h-[190px] sm:w-[320px] sm:h-[320px] rounded-full border border-aqua/30 animate-spin-slow [animation-direction:reverse]" />
