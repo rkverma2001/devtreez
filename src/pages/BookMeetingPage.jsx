@@ -7,7 +7,7 @@ import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import HeadingBar from "../components/ui/HeadingBar";
 import Honeypot from "../components/ui/Honeypot";
-import { api } from "../lib/api";
+import { api, apiEnabled, sendByEmail } from "../lib/api";
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition";
@@ -46,6 +46,95 @@ function downloadIcs({ start, end }) {
   URL.revokeObjectURL(url);
 }
 
+// Used when no backend is configured: collects preferred times and sends the request by email.
+function EmailBookingForm({ initialEmail }) {
+  const [form, setForm] = useState({ name: "", email: initialEmail ?? "", company: "", topic: "", times: "", details: "" });
+  const [errors, setErrors] = useState({});
+  const [href, setHref] = useState(null);
+  const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    const next = {};
+    if (!form.name.trim()) next.name = "Please tell us your name.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) next.email = "Please enter a valid email.";
+    if (!form.times.trim()) next.times = "Tell us a few days and times that suit you.";
+    setErrors(next);
+    if (Object.keys(next).length) return;
+    setHref(
+      sendByEmail(`Discovery call request from ${form.name}`, {
+        Name: form.name,
+        Email: form.email,
+        Company: form.company,
+        Topic: form.topic,
+        "Preferred times": form.times,
+        Details: form.details,
+      })
+    );
+  };
+
+  if (href) {
+    return (
+      <div className="py-12 text-center" role="status">
+        <CalendarCheck className="mx-auto w-16 h-16 text-brand" />
+        <h2 className="mt-6 font-display text-3xl font-bold">Almost done!</h2>
+        <p className="mt-3 text-gray-400 max-w-md mx-auto">
+          Your email app should open with your request ready to send. We'll reply with a confirmed time and meeting link.{" "}
+          <a href={href} className="text-brand underline">Open it again</a>
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} noValidate className="grid sm:grid-cols-2 gap-5">
+      <div className="sm:col-span-2">
+        <h2 className="flex items-center gap-2 font-display text-2xl font-semibold">
+          <CalendarDays className="text-brand" size={22} /> Request a time
+        </h2>
+        <HeadingBar className="mt-3 w-12" />
+        <p className="mt-4 text-gray-400">Calls run Monday to Friday, 10:00 to 18:00 IST. Tell us what suits you and we'll confirm by email.</p>
+      </div>
+      {[
+        ["name", "Your name", "Jane Doe", "name"],
+        ["email", "Work email", "jane@company.com", "email"],
+        ["company", "Company (optional)", "Company name", "organization"],
+      ].map(([key, label, placeholder, auto]) => (
+        <label key={key} className="block">
+          <span className="block text-sm text-gray-300 mb-2">{label}</span>
+          <input type={key === "email" ? "email" : "text"} value={form[key]} onChange={update(key)} placeholder={placeholder} autoComplete={auto} className={inputClass} />
+          {errors[key] && <span className="mt-1.5 block text-xs text-red-400">{errors[key]}</span>}
+        </label>
+      ))}
+      <label className="block">
+        <span className="block text-sm text-gray-300 mb-2">What would you like to discuss?</span>
+        <select value={form.topic} onChange={update("topic")} className={inputClass}>
+          <option value="" className="bg-ink">Choose a topic</option>
+          {services.map((s) => (
+            <option key={s.slug} className="bg-ink">{s.title}</option>
+          ))}
+          <option className="bg-ink">Something else</option>
+        </select>
+      </label>
+      <label className="block sm:col-span-2">
+        <span className="block text-sm text-gray-300 mb-2">Preferred days and times (IST)</span>
+        <input value={form.times} onChange={update("times")} placeholder="e.g. Tue or Wed afternoon, Thu after 3 pm" className={inputClass} />
+        {errors.times && <span className="mt-1.5 block text-xs text-red-400">{errors.times}</span>}
+      </label>
+      <label className="block sm:col-span-2">
+        <span className="block text-sm text-gray-300 mb-2">Anything we should know? (optional)</span>
+        <textarea rows={3} value={form.details} onChange={update("details")} className={`${inputClass} resize-none`} />
+      </label>
+      <button
+        type="submit"
+        className="sm:col-span-2 group flex items-center justify-center gap-2 bg-gradient-to-r from-brand to-volt px-7 py-4 rounded-full font-semibold text-black shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all cursor-pointer"
+      >
+        Request a call <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+      </button>
+    </form>
+  );
+}
+
 export default function BookMeetingPage() {
   const { state } = useLocation();
   const [config, setConfig] = useState(null);
@@ -54,11 +143,12 @@ export default function BookMeetingPage() {
   const [slot, setSlot] = useState(null);
   const [form, setForm] = useState({ name: "", email: state?.email ?? "", company: "", topic: "", details: "", website: "" });
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState({ loading: true, error: "" });
+  const [status, setStatus] = useState({ loading: apiEnabled, error: "" });
   const [booking, setBooking] = useState(null);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
+    if (!apiEnabled) return;
     api
       .get("/api/meetings/config")
       .then((c) => {
@@ -128,6 +218,9 @@ export default function BookMeetingPage() {
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-28">
         <Reveal>
           <div className="rounded-[2rem] border border-white/10 bg-surface p-6 sm:p-10">
+            {!apiEnabled ? (
+              <EmailBookingForm initialEmail={state?.email} />
+            ) : (
             <AnimatePresence mode="wait">
               {booking ? (
                 <motion.div key="done" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="py-12 text-center" role="status">
@@ -260,6 +353,7 @@ export default function BookMeetingPage() {
                 </motion.form>
               )}
             </AnimatePresence>
+            )}
           </div>
         </Reveal>
       </section>

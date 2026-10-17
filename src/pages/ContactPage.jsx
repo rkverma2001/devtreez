@@ -7,7 +7,7 @@ import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import HeadingBar from "../components/ui/HeadingBar";
 import Honeypot from "../components/ui/Honeypot";
-import { api } from "../lib/api";
+import { api, apiEnabled, sendByEmail } from "../lib/api";
 
 const budgets = ["Under ₹5L", "₹5L – ₹15L", "₹15L – ₹50L", "₹50L+", "Not sure yet"];
 
@@ -29,6 +29,7 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [serverError, setServerError] = useState("");
+  const [emailHref, setEmailHref] = useState(null);
   const [openFaq, setOpenFaq] = useState(0);
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -42,6 +43,20 @@ export default function ContactPage() {
     setErrors(next);
     setServerError("");
     if (Object.keys(next).length) return;
+    if (!apiEnabled) {
+      setEmailHref(
+        sendByEmail(`Project enquiry from ${form.name}`, {
+          Name: form.name,
+          Email: form.email,
+          Company: form.company,
+          Service: form.service,
+          Budget: form.budget,
+          Message: form.message,
+        })
+      );
+      setSent(true);
+      return;
+    }
     setSending(true);
     try {
       await api.post("/api/leads", { ...form, source: "contact" });
@@ -80,7 +95,15 @@ export default function ContactPage() {
                 >
                   <CheckCircle2 className="mx-auto w-16 h-16 text-brand" />
                   <h2 className="mt-6 font-display text-3xl font-bold">Thanks, {form.name.split(" ")[0]}!</h2>
-                  <p className="mt-3 text-gray-400">We've got your message and will reply to {form.email} soon.</p>
+                  {emailHref ? (
+                    <p className="mt-3 text-gray-400">
+                      Your email app should open with your message ready to send.{" "}
+                      <a href={emailHref} className="text-brand underline">Open it again</a> or write to us at{" "}
+                      <a href="mailto:hello@devtreez.com" className="text-brand underline">hello@devtreez.com</a>.
+                    </p>
+                  ) : (
+                    <p className="mt-3 text-gray-400">We've got your message and will reply to {form.email} soon.</p>
+                  )}
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={submit} noValidate exit={{ opacity: 0 }} className="grid sm:grid-cols-2 gap-5">

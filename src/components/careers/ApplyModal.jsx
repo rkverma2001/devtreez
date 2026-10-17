@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { CheckCircle2, Loader2, Send, X } from "lucide-react";
 import Honeypot from "../ui/Honeypot";
-import { api } from "../../lib/api";
+import { api, apiEnabled, sendByEmail } from "../../lib/api";
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition";
@@ -42,6 +42,20 @@ export default function ApplyModal({ role, onClose }) {
     if (!/^\S+@\S+\.\S+$/.test(form.email)) next.email = "Please enter a valid email.";
     setErrors(next);
     if (Object.keys(next).length) return;
+    if (!apiEnabled) {
+      sendByEmail(`Application: ${role.title} - ${form.name}`, {
+        Role: role.title,
+        Name: form.name,
+        Email: form.email,
+        Phone: form.phone,
+        LinkedIn: form.linkedin,
+        Portfolio: form.portfolio,
+        Resume: form.resumeUrl,
+        "Why I'm a great fit": form.coverLetter,
+      });
+      setDone(true);
+      return;
+    }
     setSending(true);
     try {
       await api.post("/api/applications", { ...form, role: role.title });
@@ -79,7 +93,11 @@ export default function ApplyModal({ role, onClose }) {
           <div className="py-10 text-center" role="status">
             <CheckCircle2 className="mx-auto w-14 h-14 text-brand" />
             <h2 className="mt-5 font-display text-2xl font-bold">Application received</h2>
-            <p className="mt-2 text-gray-400">Thanks, {form.name.split(" ")[0]}! We'll review it and get back to you.</p>
+            <p className="mt-2 text-gray-400">
+              {apiEnabled
+                ? `Thanks, ${form.name.split(" ")[0]}! We'll review it and get back to you.`
+                : "Your email app should open with your application ready to send. Attach your resume if you like."}
+            </p>
           </div>
         ) : (
           <form onSubmit={submit} noValidate>

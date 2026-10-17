@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import Honeypot from "../ui/Honeypot";
-import { api } from "../../lib/api";
+import { api, apiEnabled, sendByEmail } from "../../lib/api";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -11,6 +11,10 @@ export default function NewsletterForm() {
   const submit = async (e) => {
     e.preventDefault();
     if (!/^\S+@\S+\.\S+$/.test(email)) return setState({ status: "error", message: "Please enter a valid email." });
+    if (!apiEnabled) {
+      sendByEmail("Subscribe me to devtreez updates", { Email: email });
+      return setState({ status: "done", message: "Your email app should open: just hit send to subscribe." });
+    }
     setState({ status: "sending", message: "" });
     try {
       await api.post("/api/subscribers", { email, source: "footer", website });

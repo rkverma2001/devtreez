@@ -1,6 +1,15 @@
-// Small client for the devtreez backend (Devtreez/backend).
-// Set VITE_API_URL in .env (e.g. https://api.devtreez.com); defaults to the local dev server.
-export const API_URL = (import.meta.env.VITE_API_URL ?? "http://localhost:5000").replace(/\/$/, "");
+import { contactInfo } from "../data/siteContent";
+
+// Client for the devtreez backend (Devtreez/backend).
+// Set VITE_API_URL at build time (e.g. https://api.devtreez.com). In development it defaults to the local API.
+const configuredUrl = import.meta.env.VITE_API_URL;
+export const API_URL = (configuredUrl ?? "http://localhost:5000").replace(/\/$/, "");
+
+/**
+ * Whether a backend is available. Production builds without VITE_API_URL fall back to email:
+ * forms open the visitor's mail app pre-filled to the company inbox, and the chat is hidden.
+ */
+export const apiEnabled = Boolean(configuredUrl) || import.meta.env.DEV;
 
 export class ApiError extends Error {
   constructor(message, { status, fields } = {}) {
@@ -30,3 +39,19 @@ export const api = {
   get: (path) => request("GET", path),
   post: (path, body) => request("POST", path, body),
 };
+
+/** Build a mailto: link to the company inbox with a subject and "Label: value" lines. */
+export function mailtoLink(subject, fields) {
+  const body = Object.entries(fields)
+    .filter(([, value]) => value && String(value).trim())
+    .map(([label, value]) => `${label}: ${value}`)
+    .join("\n");
+  return `${contactInfo.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+/** Open the visitor's email app with a pre-filled message; returns the link so the UI can offer it again. */
+export function sendByEmail(subject, fields) {
+  const href = mailtoLink(subject, fields);
+  window.location.href = href;
+  return href;
+}
