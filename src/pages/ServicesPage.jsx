@@ -13,6 +13,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Solutions"
         image="workshop"
+        video="table"
         imageAlt="Team planning a project with sticky notes on a whiteboard"
         title="Everything You Need To"
         highlight="Build With AI"

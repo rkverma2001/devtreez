@@ -15,6 +15,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About devtreez"
         image="meeting"
+        video="meeting"
         imageAlt="Team meeting around a conference table"
         title="Growing Ideas Into"
         highlight="Global Innovations"

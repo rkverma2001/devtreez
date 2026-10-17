@@ -1,4 +1,4 @@
-# Photo credits
+# Media credits
 
 Photos in `public/images/photos/` are from [Unsplash](https://unsplash.com) and used under the [Unsplash License](https://unsplash.com/license) (free for commercial use, no attribution required). They are stock imagery, not photos of devtreez staff, offices or clients.
 
@@ -34,3 +34,21 @@ Photos in `public/images/photos/` are from [Unsplash](https://unsplash.com) and 
 | `circuit-*.webp` | https://images.unsplash.com/photo-1518770660439-4636190af475 |
 | `collab-*.webp` | https://images.unsplash.com/photo-1531482615713-2afd69097998 |
 | `teamwork-*.webp` | https://images.unsplash.com/photo-1519389950473-47ba0277781c |
+
+## Videos
+
+Clips in `public/videos/` are from [Mixkit](https://mixkit.co) under the Mixkit **Stock Video Free License** (each clip's page was checked for this license; "Restricted" clips were not used). Re-encoded to 720p, muted, max 14 s. Stock footage, not devtreez staff or offices.
+
+| File | Mixkit clip |
+|---|---|
+| `city.mp4` | https://mixkit.co/free-stock-video/aerial-panorama-over-the-buildings-of-a-big-city-41541/ |
+| `meeting.mp4` | https://mixkit.co/free-stock-video/business-people-at-work-meeting-4809/ |
+| `office.mp4` | https://mixkit.co/free-stock-video/busy-office-space-918/ |
+| `table.mp4` | https://mixkit.co/free-stock-video/people-having-a-work-meeting-around-a-table-4547/ |
+| `programmer.mp4` | https://mixkit.co/free-stock-video/experienced-programmer-working-on-a-powerful-computer-41656/ |
+| `coworkers.mp4` | https://mixkit.co/free-stock-video/two-coworkers-talking-and-laughing-4872/ |
+| `typing.mp4` | https://mixkit.co/free-stock-video/typing-on-a-laptop-242/ |
+
+## Technology logos
+
+Icons in `src/data/techLogos.js` come from [Simple Icons](https://simpleicons.org) (CC0). The logos are trademarks of their owners and are shown only to indicate technologies devtreez works with, not partnership or endorsement.

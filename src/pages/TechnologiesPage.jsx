@@ -4,6 +4,7 @@ import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 import SectionHeading from "../components/ui/SectionHeading";
 import CtaSection from "../components/cta/CtaSection";
+import TechLogo from "../components/ui/TechLogo";
 
 export default function TechnologiesPage() {
   return (
@@ -11,6 +12,7 @@ export default function TechnologiesPage() {
       <PageHero
         eyebrow="Technology Lab"
         image="circuit"
+        video="programmer"
         imageAlt="Close-up of a computer circuit board"
         title="See Our Tech"
         highlight="In Action"
@@ -71,8 +73,9 @@ export default function TechnologiesPage() {
                     {cat.items.map((item) => (
                       <span
                         key={item}
-                        className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 hover:border-brand/50 hover:text-brand transition-colors"
+                        className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 hover:border-white/25 hover:text-white transition-colors"
                       >
+                        <TechLogo name={item} className="w-4 h-4" />
                         {item}
                       </span>
                     ))}

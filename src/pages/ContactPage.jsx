@@ -44,6 +44,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         image="handshake"
+        video="coworkers"
         imageAlt="Two people shaking hands in an office"
         title="Let's Build"
         highlight="What's Next"

@@ -16,6 +16,7 @@ export default function ProjectsPage() {
       <PageHero
         eyebrow="Our Work"
         image="teamwork"
+        video="typing"
         imageAlt="Overhead view of a team working on laptops"
         title="Projects With"
         highlight="Live Demos"

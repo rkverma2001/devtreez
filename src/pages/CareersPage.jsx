@@ -12,6 +12,7 @@ export default function CareersPage() {
       <PageHero
         eyebrow="Careers"
         image="team"
+        video="office"
         imageAlt="Developers working together on laptops"
         title="Build The Future"
         highlight="With Us"

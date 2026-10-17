@@ -4,6 +4,7 @@ import ApproachSection from "../components/approach/ApproachSection";
 import ServicesSection from "../components/services/ServicesSection";
 import ProjectsShowcase from "../components/projects/ProjectsShowcase";
 import AboutSection from "../components/about/AboutSection";
+import VideoBand from "../components/videoband/VideoBand";
 import IndustriesSection from "../components/industries/IndustriesSection";
 import ProcessSection from "../components/process/ProcessSection";
 import CtaSection from "../components/cta/CtaSection";
@@ -16,6 +17,7 @@ const HomePage = () => {
       <ApproachSection />
       <ServicesSection />
       <ProjectsShowcase />
+      <VideoBand />
       <AboutSection />
       <IndustriesSection />
       <ProcessSection />
