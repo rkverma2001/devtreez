@@ -2,18 +2,11 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, CheckCircle2, Clock, MessageSquare, Sparkles } from "lucide-react";
-import { services } from "../data/siteContent";
+import { faqs, services } from "../data/siteContent";
 import PageHero from "../components/ui/PageHero";
 import Reveal from "../components/ui/Reveal";
 
 const budgets = ["Under ₹5L", "₹5L – ₹15L", "₹15L – ₹50L", "₹50L+", "Not sure yet"];
-
-const faqs = [
-  { q: "How quickly can you start?", a: "Usually within one to two weeks of our discovery call, depending on scope." },
-  { q: "Do you work with startups?", a: "Yes. We help founders go from idea to MVP, and stay on as the product scales." },
-  { q: "Will I own the code?", a: "Yes. All code and IP we build for you belongs to you." },
-  { q: "Can you work with our existing team?", a: "Absolutely. We can lead the build or embed alongside your engineers." },
-];
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition";

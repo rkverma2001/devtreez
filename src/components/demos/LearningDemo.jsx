@@ -47,7 +47,8 @@ function makeQuestion(level) {
 export default function LearningDemo() {
   const [level, setLevel] = useState(0);
   const [mastery, setMastery] = useState(10);
-  const [question, setQuestion] = useState(() => makeQuestion(0));
+  // Fixed first question so pre-rendered HTML matches the first client render.
+  const [question, setQuestion] = useState({ prompt: "7 + 8", answer: 15, hint: "Add the tens first, then the ones.", options: [13, 15, 16, 14] });
   const [picked, setPicked] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const [streak, setStreak] = useState(0);

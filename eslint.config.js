@@ -27,4 +27,10 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)', argsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  {
+    // Build-time only: never hot-reloaded, runs in Node.
+    files: ['src/entry-server.jsx', 'scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 ])

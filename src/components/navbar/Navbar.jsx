@@ -33,8 +33,10 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="/devtreez_tree.svg"
+              src="/images/devtreez-logo.webp"
               alt=""
+              width="40"
+              height="40"
               className="w-10 h-10 object-contain"
             />
             <span className="font-display text-2xl lg:text-3xl font-bold">

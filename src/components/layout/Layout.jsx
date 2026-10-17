@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { MotionConfig, motion, useScroll } from "motion/react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
+import Seo from "../../seo/Seo";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -33,6 +34,7 @@ export default function Layout() {
   return (
     <MotionConfig reducedMotion="user">
       <ScrollManager />
+      <Seo />
 
       {/* Page scroll progress */}
       <motion.div

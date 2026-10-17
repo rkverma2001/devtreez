@@ -153,8 +153,11 @@ const HeroSection = () => {
           <div className="absolute w-[260px] h-[260px] rounded-full bg-brand/25 blur-[90px]" />
 
           <motion.img
-            src="/devtreez_tree.svg"
-            alt="devtreez AI tree"
+            src="/images/devtreez-tree.webp"
+            alt="devtreez circuit tree: ideas growing into AI-powered products"
+            width="840"
+            height="1008"
+            fetchPriority="high"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}

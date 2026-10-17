@@ -369,3 +369,10 @@ export const openRoles = [
   { title: "UI/UX Designer", team: "Design", type: "Full-time", location: "Remote / India" },
   { title: "DevOps Engineer", team: "Cloud", type: "Contract", location: "Remote" },
 ];
+
+export const faqs = [
+  { q: "How quickly can you start?", a: "Usually within one to two weeks of our discovery call, depending on scope." },
+  { q: "Do you work with startups?", a: "Yes. We help founders go from idea to MVP, and stay on as the product scales." },
+  { q: "Will I own the code?", a: "Yes. All code and IP we build for you belongs to you." },
+  { q: "Can you work with our existing team?", a: "Absolutely. We can lead the build or embed alongside your engineers." },
+];
